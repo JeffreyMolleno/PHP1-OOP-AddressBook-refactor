@@ -31,12 +31,15 @@ class Query extends Connection
 	{
 		//your update code here
 		$stmt = $this->getPDO()->prepare('UPDATE address SET name = ? , phone = ?, email = ? WHERE id = ?');
-		$stmt->execute([$get['name'], $get['phone'], $get['email'], $get['id']]);
+		$stmt->execute([$get['name'], $get['phone'], $get['email'], $id]);
 		return true;
 	}
 
 	public function delete($id)
 	{
 		//your delete code
+		$stmt = $this->getPDO()->prepare('DELETE FROM address WHERE id = ?');
+		$stmt->execute([$id]);
+		return true;
 	}
 }

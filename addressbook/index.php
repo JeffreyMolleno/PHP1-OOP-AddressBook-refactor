@@ -15,7 +15,7 @@ $self = $_SERVER['PHP_SELF'];
 	delete($id)
  */
 
-	$test = new Query();
+$test = new Query();
 ?>
 <!-- Your HTML below php code-->
 
@@ -52,15 +52,17 @@ $self = $_SERVER['PHP_SELF'];
 			</thead>
 			<tbody>
 				<?
-					foreach ($test->display() as $cdetails) {
-						echo '<tr>
-								<th>' . $cdetails->name . '</th>
-								<th>' . $cdetails->phone . '</th>
-								<th>' . $cdetails->email . '</th>
-								<th><button type="button" class="btn btn-success" data-toggle="modal" data-target="#update-modal">UPDATE</button>
-									<button type="button" class="btn btn-danger">DELETE</button></th>
+				foreach ($test->display() as $cdetails) {
+					echo '<tr>
+								<th id="name">' . $cdetails->name . '</th>
+								<th id="phone">' . $cdetails->phone . '</th>
+								<th id="email">' . $cdetails->email . '</th>
+								<th>
+									<button data-id="' . $cdetails->id . '" type="button" class="edit-btn btn btn-success" data-toggle="modal" data-target="#update-modal">UPDATE</button>
+									<button data-id="' . $cdetails->id . '" type="button" class="delete-btn btn btn-danger">DELETE</button></th>
+								</th>
 							</tr>';
-					}
+				}
 				?>
 			</tbody>
 		</table>
@@ -97,6 +99,10 @@ $self = $_SERVER['PHP_SELF'];
 						<div class="form-group">
 							<input type="hidden" class="form-control" id="edit-id" name="edit-id">
 						</div>
+
+						<input type="hidden" id="edit-val-id-pass" name="edit-val-id-pass">
+
+						<input type="hidden" id="delete-val-id-pass" name="delete-val-id-pass">
 
 						<div class="form-submit">
 
