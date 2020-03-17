@@ -1,0 +1,21 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.table-container{
+    margin: 0px auto;
+    max-width: 1200px;
+    min-width: 700px;
+    width: 70%;
+    margin-top: 20px;
+}
+
+.insert-btn{
+    margin-bottom: 10px;
+}
+
+.table{
+    border: 1px solid #f3f3f3;
+}
