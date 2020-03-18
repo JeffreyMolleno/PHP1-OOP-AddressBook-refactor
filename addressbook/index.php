@@ -15,7 +15,8 @@ $self = $_SERVER['PHP_SELF'];
 	delete($id)
  */
 
-$test = new Query();
+	$contacts = new Query();
+	$contacts_details = $contacts->display();
 ?>
 <!-- Your HTML below php code-->
 
@@ -35,7 +36,7 @@ $test = new Query();
 		<!-- Navbar content -->
 		<a class="navbar-brand" href="#"><i class="fa fa-phone-square"></i> &nbsp Adress Book</a>
 		<ul class="navbar-nav my-2 my-lg-0 menu-list">
-			<li class="nav-item logout" name="logout"><a href="?logout=true">Logout</a></li>
+			<li class="nav-item logout"	 name="logout"><a href="?logout=true">Logout</a></li>
 		</ul>
 	</nav>
 
@@ -50,9 +51,9 @@ $test = new Query();
 					<th scope="col">Actions</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody class="table-data-row">
 				<?
-				foreach ($test->display() as $cdetails) {
+				foreach ($contacts_details as $cdetails) {
 					echo '<tr>
 								<th id="name">' . $cdetails->name . '</th>
 								<th id="phone">' . $cdetails->phone . '</th>
@@ -73,7 +74,7 @@ $test = new Query();
 		<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Updating Info</h5>
+					<h5 class="modal-title" id="exampleModalLabel">Contact Form</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -118,6 +119,5 @@ $test = new Query();
 			</div>
 		</div>
 	</div>
-</body>
-
+	</body>
 </html>

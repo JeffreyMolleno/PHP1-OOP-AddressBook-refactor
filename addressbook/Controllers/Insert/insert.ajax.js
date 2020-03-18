@@ -10,13 +10,13 @@ $(document).ready(function() {
 
   // on adding new contacts
   $("#add-contacts-form").on("submit", function(e) {
+    $("#edit-val-id-pass").val() ? "" : e.preventDefault();
+    $(".insert-btn").blur();
     if (
       $("#name-input").val() === "" ||
       $("#email-input").val() === "" ||
       $("#contact-number").val() === ""
     ) {
-      e.preventDefault();
-
       Swal.fire({
         title: "Invalid Inputs",
         text: "Missing information",
@@ -32,7 +32,6 @@ $(document).ready(function() {
         contentType: false,
         processData: false,
         success: function(data) {
-          console.log(data);
           if (data) {
             Swal.fire({
               title: "Success",
@@ -40,11 +39,13 @@ $(document).ready(function() {
               confirmButtonText: "OK"
             });
 
-            location.reload();
-            $("#edit-val-ref-id").val("");
-            $("#name-input").val("");
-            $("#email-input").val("");
-            $("#contact-number").val("");
+            $("#update-modal").modal("toggle");
+
+            $("#edit-val-id-pass").val()
+              ? ""
+              : $(".table-data-row").append(data);
+
+            // reset();
           }
         }
       });
@@ -52,9 +53,10 @@ $(document).ready(function() {
   });
 
   // On editing values of a row
-  $(".edit-btn").on("click", function(e) {
+  $("tbody").on("click", ".edit-btn", function(e) {
     $("#delete-val-id-pass").val("");
     $("#edit-val-id-pass").val($(this).data("id"));
+
     // form reference
     $("#email-input").val(
       $(this)
@@ -80,8 +82,10 @@ $(document).ready(function() {
   });
 
   //Deleting a row
-  $(".delete-btn").on("click", function(e) {
+  $("tbody").on("click", ".delete-btn", function(e) {
     $("#delete-val-id-pass").val($(this).data("id"));
+
+    console.log($(this).html());
 
     Swal.fire({
       title: "Contact will be Deleted",
@@ -99,11 +103,20 @@ $(document).ready(function() {
           data: { idref: $("#delete-val-id-pass").val() },
           success: function(data) {
             console.log(data);
-            $("#delete-val-id-pass").val("");
+            reset();
           }
         });
       },
       allowOutsideClick: () => !Swal.isLoading()
     });
   });
+
+  const reset = () => {
+    console.log("resetting data");
+    // reset data
+    $("#edit-val-ref-id").val("");
+    $("#name-input").val("");
+    $("#email-input").val("");
+    $("#contact-number").val("");
+  };
 });
