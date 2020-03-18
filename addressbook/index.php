@@ -94,7 +94,7 @@ $self = $_SERVER['PHP_SELF'];
 
 						<div class="form-group">
 							<label for="email">Email</label>
-							<input type="text" class="form-control" id="email-input" name="email-input">
+							<input type="email" class="form-control" id="email-input" name="email-input">
 						</div>
 
 						<div class="form-group">
