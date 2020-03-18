@@ -2,6 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    font-weight: 100;
 }
 
 .table-container{
@@ -19,3 +21,4 @@
 .table{
     border: 1px solid #f3f3f3;
 }
+

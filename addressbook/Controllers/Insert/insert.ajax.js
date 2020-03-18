@@ -1,40 +1,54 @@
 $(document).ready(function() {
-  
+  // set empty state
+  $(".insert-btn").on("click", function(e) {
+    $("#delete-val-id-pass").val("");
+    $("#edit-val-ref-id").val("");
+    $("#name-input").val("");
+    $("#email-input").val("");
+    $("#contact-number").val("");
+  });
+
   // on adding new contacts
   $("#add-contacts-form").on("submit", function(e) {
-    $.ajax({
-      url: $("#edit-val-id-pass").val()
-        ? "Controllers/Update/update.controller.php"
-        : "Controllers/Insert/insert.controller.php",
-      method: "POST",
-      data: new FormData(this),
-      contentType: false,
-      processData: false,
-      success: function(data) {
-        console.log(data);
-        if (
-          $("#email-input").val() === "" ||
-          $("#email-input").val() === "" ||
-          $("#email-input").val() === ""
-        ) {
-          Swal.fire({
-            title: "Invalid Inputs",
-            text: "Missing information",
-            confirmButtonText: "OK"
-          });
-        } else if (data) {
-          Swal.fire({
-            title: "Success",
-            text: "New contact is added",
-            confirmButtonText: "OK"
-          });
-          $("#edit-val-ref-id").val("");
-          $("#email-input").val("");
-          $("#email-input").val("");
-          $("#email-input").val("");
+    if (
+      $("#name-input").val() === "" ||
+      $("#email-input").val() === "" ||
+      $("#contact-number").val() === ""
+    ) {
+      e.preventDefault();
+
+      Swal.fire({
+        title: "Invalid Inputs",
+        text: "Missing information",
+        confirmButtonText: "OK"
+      });
+    } else {
+      $.ajax({
+        url: $("#edit-val-id-pass").val()
+          ? "Controllers/Update/update.controller.php"
+          : "Controllers/Insert/insert.controller.php",
+        method: "POST",
+        data: new FormData(this),
+        contentType: false,
+        processData: false,
+        success: function(data) {
+          console.log(data);
+          if (data) {
+            Swal.fire({
+              title: "Success",
+              text: "New contact is added",
+              confirmButtonText: "OK"
+            });
+
+            location.reload();
+            $("#edit-val-ref-id").val("");
+            $("#name-input").val("");
+            $("#email-input").val("");
+            $("#contact-number").val("");
+          }
         }
-      }
-    });
+      });
+    }
   });
 
   // On editing values of a row
@@ -65,9 +79,7 @@ $(document).ready(function() {
     );
   });
 
-
-
-  //Deleting a row 
+  //Deleting a row
   $(".delete-btn").on("click", function(e) {
     $("#delete-val-id-pass").val($(this).data("id"));
 
@@ -95,5 +107,3 @@ $(document).ready(function() {
     });
   });
 });
-
-
