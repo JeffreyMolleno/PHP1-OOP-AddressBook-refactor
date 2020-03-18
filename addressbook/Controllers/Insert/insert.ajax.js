@@ -45,7 +45,7 @@ $(document).ready(function() {
               ? ""
               : $(".table-data-row").append(data);
 
-            // reset();
+            reset();
           }
         }
       });

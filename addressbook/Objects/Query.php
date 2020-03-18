@@ -21,7 +21,7 @@ class Query extends Connection
 
 	public function insert($get)
 	{
-		//   your insert code here
+		//your insert code here
 		$stmt = $this->getPDO()->prepare('INSERT INTO address( name, phone, email) VALUES ( ?, ?, ?)');
 		$stmt->execute([$get['name'], $get['phone'], $get['email']]);
 		return $id = $this->getPDO()->lastInsertId();
