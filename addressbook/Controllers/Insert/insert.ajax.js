@@ -1,4 +1,6 @@
 $(document).ready(function() {
+  
+  // on adding new contacts
   $("#add-contacts-form").on("submit", function(e) {
     $.ajax({
       url: $("#edit-val-id-pass").val()
@@ -35,6 +37,7 @@ $(document).ready(function() {
     });
   });
 
+  // On editing values of a row
   $(".edit-btn").on("click", function(e) {
     $("#delete-val-id-pass").val("");
     $("#edit-val-id-pass").val($(this).data("id"));
@@ -62,6 +65,9 @@ $(document).ready(function() {
     );
   });
 
+
+
+  //Deleting a row 
   $(".delete-btn").on("click", function(e) {
     $("#delete-val-id-pass").val($(this).data("id"));
 
@@ -89,3 +95,5 @@ $(document).ready(function() {
     });
   });
 });
+
+

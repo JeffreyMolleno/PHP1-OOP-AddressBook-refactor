@@ -88,7 +88,7 @@ $test = new Query();
 
 						<div class="form-group">
 							<label for="contact-number">Contact Number</label>
-							<input type="number" class="form-control" id="contact-number" name="contact-number">
+							<input type="tel" title="Input valid contact number" pattern="[0-9\-]+" class="form-control" id="contact-number" name="contact-number">
 						</div>
 
 						<div class="form-group">
