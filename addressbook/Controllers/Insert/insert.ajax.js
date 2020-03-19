@@ -10,7 +10,6 @@ $(document).ready(function() {
 
   // on adding new contacts
   $("#add-contacts-form").on("submit", function(e) {
-    $("#edit-val-id-pass").val() ? "" : e.preventDefault();
     $(".insert-btn").blur();
     if (
       $("#name-input").val() === "" ||
@@ -41,17 +40,18 @@ $(document).ready(function() {
 
             $("#update-modal").modal("toggle");
 
-            $("#edit-val-id-pass").val()
-              ? ""
-              : $(".table-data-row").append(data);
-
             reset();
           }
         }
       });
     }
+
+    $("#edit-val-id-pass").val()
+      ? location.reload()
+      : $(".table-data-row").append(data);
   });
 
+  let edit_ref = "";
   // On editing values of a row
   $("tbody").on("click", ".edit-btn", function(e) {
     $("#delete-val-id-pass").val("");
@@ -79,7 +79,19 @@ $(document).ready(function() {
         .find("#name")
         .html()
     );
+
+    edit_ref = $(this);
   });
+
+  const update_table = () => {
+    console.log(
+      $(this)
+        .parent()
+        .parent()
+        .find("#name")
+        .html()
+    );
+  };
 
   //Deleting a row
   $("tbody").on("click", ".delete-btn", function(e) {

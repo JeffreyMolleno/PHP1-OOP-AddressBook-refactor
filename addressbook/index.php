@@ -16,7 +16,6 @@ $self = $_SERVER['PHP_SELF'];
  */
 
 	$contacts = new Query();
-	$contacts_details = $contacts->display();
 ?>
 <!-- Your HTML below php code-->
 
@@ -53,7 +52,7 @@ $self = $_SERVER['PHP_SELF'];
 			</thead>
 			<tbody class="table-data-row">
 				<?
-				foreach ($contacts_details as $cdetails) {
+				foreach ($contacts->display() as $cdetails) {
 					echo '<tr>
 								<th id="name">' . $cdetails->name . '</th>
 								<th id="phone">' . $cdetails->phone . '</th>
