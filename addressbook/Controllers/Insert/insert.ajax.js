@@ -31,30 +31,35 @@ $(document).ready(function() {
         contentType: false,
         processData: false,
         success: function(data) {
+          console.log(data);
+
           Swal.fire({
             title: "Success",
             text: "New contact is added",
             confirmButtonText: "OK"
           });
 
-          update_table();
           $("#update-modal").modal("toggle");
 
+          console.log($("#edit-val-id-pass").val());
+
+          $("#edit-val-id-pass").val()
+            ? update_table()
+            : $(".table-data-row").append(data);
+
+          $("#edit-val-id-pass").val("");
           reset();
         }
       });
     }
 
     e.preventDefault();
-
-    // $("#edit-val-id-pass").val()
-    //   ? location.reload()
-    //   : $(".table-data-row").append(data);
   });
 
   let edit_ref;
   // On editing values of a row
   $("tbody").on("click", ".edit-btn", function(e) {
+    console.log("here 123");
     $("#delete-val-id-pass").val("");
     $("#edit-val-id-pass").val($(this).data("id"));
 
@@ -137,7 +142,6 @@ $(document).ready(function() {
   const reset = () => {
     console.log("resetting data");
     // reset data
-    $("#edit-val-ref-id").val("");
     $("#name-input").val("");
     $("#email-input").val("");
     $("#contact-number").val("");

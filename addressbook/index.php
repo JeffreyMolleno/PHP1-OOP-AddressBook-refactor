@@ -110,7 +110,7 @@ $self = $_SERVER['PHP_SELF'];
 
 							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
-							<button type="submit" class="btn btn-primary" id="submit-btn">Submit</button>
+							<button type="submit" class="submit-btn btn btn-primary" id="submit-btn">Submit</button>
 
 						</div>
 					</form>
