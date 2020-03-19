@@ -2,7 +2,6 @@
 
 <?php
 //Inlude the Query class here ..
-include_once './Objects/Query.php';
 
 $self = $_SERVER['PHP_SELF'];
 
@@ -14,8 +13,7 @@ $self = $_SERVER['PHP_SELF'];
 	update($id,$_GET)
 	delete($id)
  */
-
-	$contacts = new Query();
+	
 ?>
 <!-- Your HTML below php code-->
 
@@ -52,6 +50,10 @@ $self = $_SERVER['PHP_SELF'];
 			</thead>
 			<tbody class="table-data-row">
 				<?
+
+				include_once './Objects/Query.php';
+				$contacts = new Query();
+
 				foreach ($contacts->display() as $cdetails) {
 					echo '<tr>
 								<th id="name">' . $cdetails->name . '</th>

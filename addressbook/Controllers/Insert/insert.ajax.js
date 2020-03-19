@@ -9,7 +9,7 @@ $(document).ready(function() {
   });
 
   // on adding new contacts
-  $("#add-contacts-form").on("submit", function(e) {
+  $("#submit-btn").on("click", function(e) {
     $(".insert-btn").blur();
     if (
       $("#name-input").val() === "" ||
@@ -27,31 +27,32 @@ $(document).ready(function() {
           ? "Controllers/Update/update.controller.php"
           : "Controllers/Insert/insert.controller.php",
         method: "POST",
-        data: new FormData(this),
+        data: new FormData(document.getElementById("add-contacts-form")),
         contentType: false,
         processData: false,
         success: function(data) {
-          if (data) {
-            Swal.fire({
-              title: "Success",
-              text: "New contact is added",
-              confirmButtonText: "OK"
-            });
+          Swal.fire({
+            title: "Success",
+            text: "New contact is added",
+            confirmButtonText: "OK"
+          });
 
-            $("#update-modal").modal("toggle");
+          update_table();
+          $("#update-modal").modal("toggle");
 
-            reset();
-          }
+          reset();
         }
       });
     }
 
-    $("#edit-val-id-pass").val()
-      ? location.reload()
-      : $(".table-data-row").append(data);
+    e.preventDefault();
+
+    // $("#edit-val-id-pass").val()
+    //   ? location.reload()
+    //   : $(".table-data-row").append(data);
   });
 
-  let edit_ref = "";
+  let edit_ref;
   // On editing values of a row
   $("tbody").on("click", ".edit-btn", function(e) {
     $("#delete-val-id-pass").val("");
@@ -84,13 +85,23 @@ $(document).ready(function() {
   });
 
   const update_table = () => {
-    console.log(
-      $(this)
-        .parent()
-        .parent()
-        .find("#name")
-        .html()
-    );
+    edit_ref
+      .parent()
+      .parent()
+      .find("#name")
+      .html($("#name-input").val());
+
+    edit_ref
+      .parent()
+      .parent()
+      .find("#email")
+      .html($("#email-input").val());
+
+    edit_ref
+      .parent()
+      .parent()
+      .find("#phone")
+      .html($("#contact-number").val());
   };
 
   //Deleting a row
