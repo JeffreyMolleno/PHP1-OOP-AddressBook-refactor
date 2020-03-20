@@ -31,17 +31,20 @@ $(document).ready(function() {
         contentType: false,
         processData: false,
         success: function(data) {
-          console.log(data);
 
-          Swal.fire({
-            title: "Success",
-            text: "New contact is added",
-            confirmButtonText: "OK"
-          });
+          $("#edit-val-id-pass").val()
+            ? Swal.fire({
+              title: "Success",
+              text: "Contact is updated",
+              confirmButtonText: "OK"
+            })
+            : Swal.fire({
+              title: "Success",
+              text: "New contact is added",
+              confirmButtonText: "OK"
+            });
 
           $("#update-modal").modal("toggle");
-
-          console.log($("#edit-val-id-pass").val());
 
           $("#edit-val-id-pass").val()
             ? update_table()
@@ -59,7 +62,8 @@ $(document).ready(function() {
   let edit_ref;
   // On editing values of a row
   $("tbody").on("click", ".edit-btn", function(e) {
-    console.log("here 123");
+    $('.edit-btn').blur();
+
     $("#delete-val-id-pass").val("");
     $("#edit-val-id-pass").val($(this).data("id"));
 
@@ -111,9 +115,8 @@ $(document).ready(function() {
 
   //Deleting a row
   $("tbody").on("click", ".delete-btn", function(e) {
+    $('.delete-btn').blur();
     $("#delete-val-id-pass").val($(this).data("id"));
-
-    console.log($(this).html());
 
     Swal.fire({
       title: "Contact will be Deleted",
@@ -139,11 +142,19 @@ $(document).ready(function() {
     });
   });
 
+  $(".edit-btn").on('focus', function(e){
+    $(".edit-btn").blur();
+  });
+
+  $(".insert-btn").on('focus', function(e){
+    $(".insert-btn").blur();
+  });
+
   const reset = () => {
-    console.log("resetting data");
     // reset data
     $("#name-input").val("");
     $("#email-input").val("");
     $("#contact-number").val("");
+    $("#edit-val-id-pass").val("");
   };
 });

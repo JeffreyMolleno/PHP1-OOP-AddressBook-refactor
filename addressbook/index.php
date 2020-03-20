@@ -38,7 +38,7 @@ $self = $_SERVER['PHP_SELF'];
 	</nav>
 
 	<div class="table-container">
-		<button type="button" class="insert-btn btn btn-primary" data-toggle="modal" data-target="#update-modal">INSERT NEW DATA</button>
+		<button tabindex="-1" type="button" class="insert-btn btn btn-primary" data-toggle="modal" data-target="#update-modal">INSERT NEW DATA</button>
 		<table class="table table-hover">
 			<thead>
 				<tr>
@@ -49,7 +49,7 @@ $self = $_SERVER['PHP_SELF'];
 				</tr>
 			</thead>
 			<tbody class="table-data-row">
-				<?
+				<?php
 
 				include_once './Objects/Query.php';
 				$contacts = new Query();
@@ -60,8 +60,8 @@ $self = $_SERVER['PHP_SELF'];
 								<th id="phone">' . $cdetails->phone . '</th>
 								<th id="email">' . $cdetails->email . '</th>
 								<th>
-									<button data-id="' . $cdetails->id . '" type="button" class="edit-btn btn btn-success" data-toggle="modal" data-target="#update-modal">UPDATE</button>
-									<button data-id="' . $cdetails->id . '" type="button" class="delete-btn btn btn-danger">DELETE</button></th>
+									<button tabindex="-1" data-id="' . $cdetails->id . '" type="button" class="edit-btn btn btn-success" data-toggle="modal" data-target="#update-modal">UPDATE</button>
+									<button tabindex="-1" data-id="' . $cdetails->id . '" type="button" class="delete-btn btn btn-danger">DELETE</button></th>
 								</th>
 							</tr>';
 				}
