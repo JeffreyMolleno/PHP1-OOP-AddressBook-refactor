@@ -8,20 +8,25 @@ $(document).ready(function() {
     $("#contact-number").val("");
   });
 
+  $('#add-contacts-form').on('submit', function(e){
+    e.preventDefault();
+  });
+
   // on adding new contacts
   $("#submit-btn").on("click", function(e) {
+    // e.preventDefault();
+
     $(".insert-btn").blur();
+
+    var $regex_contact = /^(\d+-?)+\d+$/;
+    var $regex_email =  /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{1,2})+$/;
+
+
     if (
-      $("#name-input").val() === "" ||
-      $("#email-input").val() === "" ||
-      $("#contact-number").val() === ""
-    ) {
-      Swal.fire({
-        title: "Invalid Inputs",
-        text: "Missing information",
-        confirmButtonText: "OK"
-      });
-    } else {
+      $("#name-input").val() &&
+      $regex_email.test($("#email-input").val().toString()) &&
+      $regex_contact.test($("#contact-number").val().toString())
+    ){
       $.ajax({
         url: $("#edit-val-id-pass").val()
           ? "Controllers/Update/update.controller.php"
@@ -55,8 +60,6 @@ $(document).ready(function() {
         }
       });
     }
-
-    e.preventDefault();
   });
 
   let edit_ref;
@@ -133,7 +136,6 @@ $(document).ready(function() {
           method: "POST",
           data: { idref: $("#delete-val-id-pass").val() },
           success: function(data) {
-            console.log(data);
             reset();
           }
         });

@@ -84,25 +84,25 @@ $self = $_SERVER['PHP_SELF'];
 					<form id="add-contacts-form" name="add-contacts-form" method="post" action="#">
 						<div class="form-group">
 							<label for="name-input">Name</label>
-							<input type="text" class="form-control" id="name-input" name="name-input">
+							<input autofocus type="text" class="form-control" id="name-input" name="name-input">
 						</div>
 
 
 						<div class="form-group">
 							<label for="contact-number">Contact Number</label>
-							<input type="tel" title="Input valid contact number" pattern="[0-9\-]+" class="form-control" id="contact-number" name="contact-number">
+							<input required type="tel" title="Input valid contact number" pattern="[0-9\-]+" class="form-control" id="contact-number" name="contact-number">
 						</div>
 
 						<div class="form-group">
 							<label for="email">Email</label>
-							<input type="email" class="form-control" id="email-input" name="email-input">
+							<input title="Input valid email" type="email" class="form-control" id="email-input" name="email-input" pattern="/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{1,2})+$/">
 						</div>
 
 						<div class="form-group">
 							<input type="hidden" class="form-control" id="edit-id" name="edit-id">
 						</div>
 
-						<input type="hidden" id="edit-val-id-pass" name="edit-val-id-pass">
+						<input required type="hidden" id="edit-val-id-pass" name="edit-val-id-pass">
 
 						<input type="hidden" id="delete-val-id-pass" name="delete-val-id-pass">
 
