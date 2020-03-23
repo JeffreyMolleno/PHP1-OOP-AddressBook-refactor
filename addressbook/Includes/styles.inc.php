@@ -18,6 +18,6 @@ echo '
     
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script
-    src="Controllers/Insert/insert.ajax.js"
+    src="Controllers/form_functions.ajax.js"
     crossorigin="anonymous"></script>
     ';

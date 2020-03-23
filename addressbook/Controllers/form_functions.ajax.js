@@ -8,24 +8,22 @@ $(document).ready(function() {
     $("#contact-number").val("");
   });
 
+  // deliberately declared for implicit form validation
   $('#add-contacts-form').on('submit', function(e){
-    e.preventDefault();
+    // e.preventDefault();
   });
 
   // on adding new contacts
   $("#submit-btn").on("click", function(e) {
-    // e.preventDefault();
-
     $(".insert-btn").blur();
 
-    var $regex_contact = /^(\d+-?)+\d+$/;
-    var $regex_email =  /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{1,2})+$/;
-
+    var regex_contact = /^(\d+-?)+\d+$/;
+    var regex_email =  /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{1,})+$/;
 
     if (
       $("#name-input").val() &&
-      $regex_email.test($("#email-input").val().toString()) &&
-      $regex_contact.test($("#contact-number").val().toString())
+      regex_email.test($("#email-input").val().toString()) &&
+      regex_contact.test($("#contact-number").val().toString())
     ){
       $.ajax({
         url: $("#edit-val-id-pass").val()
@@ -65,7 +63,8 @@ $(document).ready(function() {
   let edit_ref;
   // On editing values of a row
   $("tbody").on("click", ".edit-btn", function(e) {
-    $('.edit-btn').blur();
+
+    $('tbody.edit-btn').blur();
 
     $("#delete-val-id-pass").val("");
     $("#edit-val-id-pass").val($(this).data("id"));
