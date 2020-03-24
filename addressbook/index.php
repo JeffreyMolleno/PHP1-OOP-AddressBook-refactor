@@ -29,11 +29,11 @@ $self = $_SERVER['PHP_SELF'];
 </head>
 
 <body>
-	<nav class="navbar navbar-dark bg-primary">
+	<nav class="navbar navbar-dark">
 		<!-- Navbar content -->
-		<a class="navbar-brand" href="#"><i class="fa fa-phone-square"></i> &nbsp Adress Book</a>
+		<a class="navbar-brand" href="#"><i class="fa fa-phone-square"></i>&nbsp Address Book</a>
 		<ul class="navbar-nav my-2 my-lg-0 menu-list">
-			<li class="nav-item logout"	 name="logout"><a href="?logout=true">Logout</a></li>
+			<!-- <li class="nav-item logout"	 name="logout"><a href="?logout=true">Logout</a></li> -->
 		</ul>
 	</nav>
 
