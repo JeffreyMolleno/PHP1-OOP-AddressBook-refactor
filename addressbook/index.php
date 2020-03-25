@@ -95,7 +95,7 @@ $self = $_SERVER['PHP_SELF'];
 
 						<div class="form-group">
 							<label for="email">Email</label>
-							<input title="Input valid email" type="email" class="form-control" id="email-input" name="email-input" pattern="/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{1,})+$/">
+							<input title="Input valid email then resubmit" type="email" class="form-control" id="email-input" name="email-input" pattern="/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{1,})+$/">
 						</div>
 
 						<div class="form-group">
